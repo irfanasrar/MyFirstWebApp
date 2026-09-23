@@ -73,6 +73,89 @@
       height: auto;
     }
 
+    /* Contact form */
+    .contact-form fieldset {
+      border: 1px solid #c5d4e8;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 0;
+    }
+
+    .contact-form legend {
+      color: #1f4e79;
+      font-weight: bold;
+      padding: 0 8px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form select,
+    .contact-form textarea {
+      width: 100%;
+      max-width: 100%;
+      padding: 10px;
+      border: 1px solid #9bb4d0;
+      border-radius: 6px;
+      font: inherit;
+      color: #222;
+      background-color: #fff;
+    }
+
+    .contact-form input:focus-visible,
+    .contact-form select:focus-visible,
+    .contact-form textarea:focus-visible,
+    .contact-form button:focus-visible {
+      outline: 3px solid #1f4e79;
+      outline-offset: 2px;
+    }
+
+    .choice-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .choice-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: normal;
+    }
+
+    .contact-form button {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1f4e79;
+      color: #fff;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .contact-form button:hover {
+      background-color: #163a5c;
+    }
+
+    .form-note {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 12px;
+    }
+
     /* Tablet and up */
     @media (min-width: 600px) {
       body {
@@ -82,6 +165,12 @@
       header, section, footer {
         padding: 20px;
         margin-bottom: 24px;
+      }
+
+      .choice-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
       }
     }
 
@@ -140,6 +229,67 @@
     <section>
       <h2>Learn More</h2>
       <p>One resource I use to learn HTML is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer" style="color: #0b8043; font-weight: bold;">MDN Web Docs (opens in a new tab)</a>.</p>
+    </section>
+
+    <section class="full-width contact-form" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact / Feedback</h2>
+      <p>Use this form to leave a short message about the page. It uses HTML form elements only (no JavaScript backend yet).</p>
+
+      <form action="#" method="get">
+        <fieldset>
+          <legend>Your details and feedback</legend>
+
+          <div class="form-group">
+            <label for="visitor-name">Name (required)</label>
+            <input type="text" id="visitor-name" name="name" required autocomplete="name" placeholder="Your name">
+          </div>
+
+          <div class="form-group">
+            <label for="visitor-email">Email (required)</label>
+            <input type="email" id="visitor-email" name="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+
+          <div class="form-group">
+            <label for="topic">Topic</label>
+            <select id="topic" name="topic">
+              <option value="">Select a topic</option>
+              <option value="coursework">Coursework question</option>
+              <option value="feedback">Page feedback</option>
+              <option value="accessibility">Accessibility</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <p id="contact-pref-label"><strong>Preferred contact method</strong></p>
+            <div class="choice-group" role="group" aria-labelledby="contact-pref-label">
+              <label for="pref-email">
+                <input type="radio" id="pref-email" name="contact_pref" value="email" checked>
+                Email
+              </label>
+              <label for="pref-none">
+                <input type="radio" id="pref-none" name="contact_pref" value="none">
+                No reply needed
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" placeholder="Write your message here"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="updates">
+              <input type="checkbox" id="updates" name="updates" value="yes">
+              I am happy to receive occasional learning tips by email
+            </label>
+          </div>
+
+          <button type="submit">Send feedback</button>
+        </fieldset>
+      </form>
+      <p class="form-note">Because this page has no server yet, submitting with <code>method=&quot;get&quot;</code> shows the field values in the browser address bar so you can check the form is wired correctly.</p>
     </section>
   </main>
 
