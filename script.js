@@ -100,3 +100,66 @@
     showMessage(parts.join(' '), false);
   });
 })();
+
+(function () {
+  var button = document.getElementById('get-advice');
+  var statusEl = document.getElementById('advice-status');
+  var resultEl = document.getElementById('advice-result');
+
+  if (!button || !statusEl || !resultEl) {
+    return;
+  }
+
+  var ADVICE_URL = 'https://api.adviceslip.com/advice';
+
+  function setLoading(isLoading) {
+    button.disabled = isLoading;
+    button.textContent = isLoading ? 'Loading…' : 'Get a tip';
+  }
+
+  function showStatus(text, isError) {
+    statusEl.textContent = text;
+    if (isError) {
+      statusEl.classList.add('is-error');
+    } else {
+      statusEl.classList.remove('is-error');
+    }
+  }
+
+  async function fetchAdvice() {
+    setLoading(true);
+    showStatus('Fetching a tip from Advice Slip…', false);
+    resultEl.textContent = '';
+
+    try {
+      // Cache-bust so each click can return a new tip
+      var response = await fetch(ADVICE_URL + '?t=' + Date.now(), {
+        method: 'GET',
+        headers: { Accept: 'application/json' },
+        cache: 'no-store'
+      });
+
+      if (!response.ok) {
+        throw new Error('HTTP ' + response.status);
+      }
+
+      var data = await response.json();
+      var advice = data && data.slip && data.slip.advice;
+
+      if (!advice) {
+        throw new Error('Unexpected API response');
+      }
+
+      resultEl.textContent = '"' + advice + '"';
+      showStatus('Tip loaded successfully.', false);
+    } catch (err) {
+      resultEl.textContent = '';
+      showStatus('Could not load a tip. Check your connection and try again.', true);
+      console.error('Advice Slip fetch failed:', err);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  button.addEventListener('click', fetchAdvice);
+})();

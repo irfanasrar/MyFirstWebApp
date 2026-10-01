@@ -239,6 +239,82 @@
     .form-tip.is-hidden {
       display: none;
     }
+
+    /* Random learning tip / public API (Week 5.7) */
+    .api-section {
+      border: 1px solid #c5d4e8;
+    }
+
+    .api-section .api-intro {
+      margin-bottom: 12px;
+      color: #444;
+    }
+
+    .api-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    #get-advice {
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      background-color: #1f4e79;
+      color: #fff;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    #get-advice:hover {
+      background-color: #163a5c;
+    }
+
+    #get-advice:disabled {
+      opacity: 0.65;
+      cursor: wait;
+    }
+
+    #get-advice:focus-visible {
+      outline: 3px solid #1f4e79;
+      outline-offset: 2px;
+    }
+
+    #advice-status {
+      min-height: 1.4em;
+      color: #555;
+      font-size: 0.95em;
+    }
+
+    #advice-status.is-error {
+      color: #8b1a1a;
+    }
+
+    #advice-result {
+      margin-top: 8px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      border: 1px solid #9bb4d0;
+      background-color: #eef5ff;
+      color: #1f4e79;
+      font-size: 1.05em;
+      font-style: italic;
+      min-height: 3em;
+    }
+
+    #advice-result:empty {
+      display: none;
+    }
+
+    .api-source {
+      font-size: 0.9em;
+      color: #555;
+      margin-top: 12px;
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -277,6 +353,18 @@
     <section>
       <h2>Learn More</h2>
       <p>One resource I use to learn HTML is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer" style="color: #0b8043; font-weight: bold;">MDN Web Docs (opens in a new tab)</a>.</p>
+    </section>
+
+
+    <section class="full-width api-section" aria-labelledby="advice-heading">
+      <h2 id="advice-heading">Random learning tip</h2>
+      <p class="api-intro">Click the button to fetch a short tip from a free public API (<a href="https://api.adviceslip.com/" target="_blank" rel="noopener noreferrer">Advice Slip</a>). The browser uses <code>fetch</code> to call the API and updates this page with the result.</p>
+      <div class="api-toolbar">
+        <button type="button" id="get-advice">Get a tip</button>
+        <span id="advice-status" role="status" aria-live="polite"></span>
+      </div>
+      <blockquote id="advice-result"></blockquote>
+      <p class="api-source">API endpoint: <code>https://api.adviceslip.com/advice</code> (no API key; CORS enabled).</p>
     </section>
 
     <section class="full-width contact-form" aria-labelledby="contact-heading">
