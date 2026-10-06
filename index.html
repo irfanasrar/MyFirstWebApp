@@ -4,439 +4,189 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Irfan Asrar</title>
-  <style>
-    /* Mobile-first base styles */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 16px;
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #222;
-      background-color: #f4f7fb;
-    }
-
-    header, section, footer {
-      margin-bottom: 16px;
-      padding: 16px;
-      background-color: white;
-      border-radius: 8px;
-    }
-
-    h1, h2 {
-      color: #1f4e79;
-      margin-top: 0;
-    }
-
-    a {
-      color: #1565c0;
-      text-decoration: underline;
-    }
-
-    a:focus-visible {
-      outline: 3px solid #1f4e79;
-      outline-offset: 2px;
-    }
-
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      z-index: 100;
-      background: #fff;
-      color: #1f4e79;
-      padding: 8px 12px;
-      text-decoration: underline;
-    }
-
-    .skip-link:focus,
-    .skip-link:focus-visible {
-      left: 16px;
-      top: 16px;
-      outline: 3px solid #1f4e79;
-      outline-offset: 2px;
-    }
-
-    /* Stack content in a single column on phones */
-    .content-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    img, video {
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Tablet and up */
-    @media (min-width: 600px) {
-      body {
-        padding: 24px 20px;
-      }
-
-      header, section, footer {
-        padding: 20px;
-        margin-bottom: 24px;
-      }
-    }
-
-    /* Desktop: two-column layout for main sections */
-    @media (min-width: 900px) {
-      body {
-        padding: 40px 20px;
-      }
-
-      .content-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-        align-items: start;
-      }
-
-      .content-grid .full-width {
-        grid-column: 1 / -1;
-      }
-    }
-
-    /* Contact / feedback form (Week 4) */
-    .contact-form fieldset {
-      border: 1px solid #c5d4e8;
-      border-radius: 8px;
-      padding: 16px;
-      margin: 0;
-    }
-
-    .contact-form legend {
-      color: #1f4e79;
-      font-weight: bold;
-      padding: 0 8px;
-    }
-
-    .form-group {
-      margin-bottom: 14px;
-    }
-
-    .contact-form label {
-      display: block;
-      margin-bottom: 4px;
-      font-weight: bold;
-      color: #333;
-    }
-
-    .contact-form input[type="text"],
-    .contact-form input[type="email"],
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #9bb4d0;
-      border-radius: 6px;
-      font: inherit;
-      color: #222;
-      background-color: #fff;
-    }
-
-    .contact-form input:focus-visible,
-    .contact-form select:focus-visible,
-    .contact-form textarea:focus-visible,
-    .contact-form button:focus-visible {
-      outline: 3px solid #1f4e79;
-      outline-offset: 2px;
-    }
-
-    .choice-group {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .choice-group label {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: normal;
-    }
-
-    .contact-form button[type="submit"] {
-      margin-top: 8px;
-      padding: 10px 18px;
-      border: none;
-      border-radius: 6px;
-      background-color: #1f4e79;
-      color: #fff;
-      font: inherit;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .contact-form button[type="submit"]:hover {
-      background-color: #163a5c;
-    }
-
-    .form-note {
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 12px;
-    }
-
-    @media (min-width: 600px) {
-      .choice-group {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 16px;
-      }
-    }
-
-    /* JavaScript feedback UI (Week 4.7) */
-    #form-feedback {
-      display: none;
-      margin-top: 16px;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid #9bb4d0;
-      background-color: #eef5ff;
-      color: #1f4e79;
-    }
-
-    #form-feedback.is-visible {
-      display: block;
-    }
-
-    #form-feedback.is-error {
-      border-color: #c62828;
-      background-color: #fdecea;
-      color: #8b1a1a;
-    }
-
-    .form-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-top: 8px;
-    }
-
-    .contact-form button[type="button"] {
-      padding: 10px 18px;
-      border: 1px solid #1f4e79;
-      border-radius: 6px;
-      background-color: #fff;
-      color: #1f4e79;
-      font: inherit;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .contact-form button[type="button"]:hover {
-      background-color: #eef5ff;
-    }
-
-    .form-tip.is-hidden {
-      display: none;
-    }
-
-    /* Random learning tip / public API (Week 5.7) */
-    .api-section {
-      border: 1px solid #c5d4e8;
-    }
-
-    .api-section .api-intro {
-      margin-bottom: 12px;
-      color: #444;
-    }
-
-    .api-toolbar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    #get-advice {
-      padding: 10px 18px;
-      border: none;
-      border-radius: 6px;
-      background-color: #1f4e79;
-      color: #fff;
-      font: inherit;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    #get-advice:hover {
-      background-color: #163a5c;
-    }
-
-    #get-advice:disabled {
-      opacity: 0.65;
-      cursor: wait;
-    }
-
-    #get-advice:focus-visible {
-      outline: 3px solid #1f4e79;
-      outline-offset: 2px;
-    }
-
-    #advice-status {
-      min-height: 1.4em;
-      color: #555;
-      font-size: 0.95em;
-    }
-
-    #advice-status.is-error {
-      color: #8b1a1a;
-    }
-
-    #advice-result {
-      margin-top: 8px;
-      padding: 14px 16px;
-      border-radius: 8px;
-      border: 1px solid #9bb4d0;
-      background-color: #eef5ff;
-      color: #1f4e79;
-      font-size: 1.05em;
-      font-style: italic;
-      min-height: 3em;
-    }
-
-    #advice-result:empty {
-      display: none;
-    }
-
-    .api-source {
-      font-size: 0.9em;
-      color: #555;
-      margin-top: 12px;
-      margin-bottom: 0;
-    }
-  </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <a class="visually-hidden-focusable btn btn-light position-absolute top-0 start-0 m-2" href="#main-content">Skip to main content</a>
 
-  <header>
-    <h1 style="text-align: center; color: #1f4e79;">About Me</h1>
-    <p style="font-size: 18px; color: #333;">Hello! My name is <strong>Irfan Asrar</strong>. I am an experienced technology professional with an interest in web technologies.</p>
-  </header>
-
-  <main id="main-content" class="content-grid">
-    <section>
-      <h2>My Background</h2>
-      <p>I have more than 20 years of professional experience. I enjoy learning about technology, solving complex problems, and developing new skills.</p>
-    </section>
-
-    <section style="background-color: #eef5ff; padding: 16px;">
-      <h2>My Interests</h2>
-      <ul>
-        <li>Technology and cybersecurity</li>
-        <li>Artificial intelligence</li>
-        <li>Travel and learning about other cultures</li>
-        <li>Investing and financial planning</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>My Learning Goals</h2>
-      <ol style="color: #444; line-height: 1.8;">
-        <li>Understand the foundations of HTML and CSS</li>
-        <li>Learn how to build useful web pages</li>
-        <li>Apply web technologies to real-world projects</li>
-      </ol>
-    </section>
-
-    <section>
-      <h2>Learn More</h2>
-      <p>One resource I use to learn HTML is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer" style="color: #0b8043; font-weight: bold;">MDN Web Docs (opens in a new tab)</a>.</p>
-    </section>
-
-
-    <section class="full-width api-section" aria-labelledby="advice-heading">
-      <h2 id="advice-heading">Random learning tip</h2>
-      <p class="api-intro">Click the button to fetch a short tip from a free public API (<a href="https://api.adviceslip.com/" target="_blank" rel="noopener noreferrer">Advice Slip</a>). The browser uses <code>fetch</code> to call the API and updates this page with the result.</p>
-      <div class="api-toolbar">
-        <button type="button" id="get-advice">Get a tip</button>
-        <span id="advice-status" role="status" aria-live="polite"></span>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary" aria-label="Main navigation">
+    <div class="container">
+      <a class="navbar-brand" href="#">Irfan Asrar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#advice">Learning tip</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="nav-link" href="#reflection">Reflection</a></li>
+        </ul>
       </div>
-      <blockquote id="advice-result"></blockquote>
-      <p class="api-source">API endpoint: <code>https://api.adviceslip.com/advice</code> (no API key; CORS enabled).</p>
+    </div>
+  </nav>
+
+  <main id="main-content" class="container py-4">
+    <header id="about" class="mb-4">
+      <h1 class="text-primary text-center">About Me</h1>
+      <p class="lead">Hello! My name is <strong>Irfan Asrar</strong>. I am an experienced technology professional with an interest in web technologies.</p>
+    </header>
+
+    <div class="row g-4 mb-4">
+      <div class="col-md-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h2 class="h4 card-title text-primary">My Background</h2>
+            <p class="card-text">I have more than 20 years of professional experience. I enjoy learning about technology, solving complex problems, and developing new skills.</p>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-6">
+        <section class="card h-100 shadow-sm bg-light">
+          <div class="card-body">
+            <h2 class="h4 card-title text-primary">My Interests</h2>
+            <ul>
+              <li>Technology and cybersecurity</li>
+              <li>Artificial intelligence</li>
+              <li>Travel and learning about other cultures</li>
+              <li>Investing and financial planning</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h2 class="h4 card-title text-primary">My Learning Goals</h2>
+            <ol>
+              <li>Understand the foundations of HTML and CSS</li>
+              <li>Learn how to build useful web pages</li>
+              <li>Apply web technologies to real-world projects</li>
+            </ol>
+          </div>
+        </section>
+      </div>
+      <div class="col-md-6">
+        <section class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h2 class="h4 card-title text-primary">Learn More</h2>
+            <p class="card-text mb-0">One resource I use to learn HTML is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer">MDN Web Docs (opens in a new tab)</a>.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <section id="advice" class="card shadow-sm mb-4" aria-labelledby="advice-heading">
+      <div class="card-body">
+        <h2 id="advice-heading" class="h4 text-primary">Random learning tip</h2>
+        <p>Click the button to fetch a short tip from a free public API (<a href="https://api.adviceslip.com/" target="_blank" rel="noopener noreferrer">Advice Slip</a>). The browser uses <code>fetch</code> to call the API and updates this page with the result.</p>
+
+        <div class="d-flex flex-wrap align-items-center gap-3 mb-3">
+          <button type="button" id="get-advice" class="btn btn-primary">Get a tip</button>
+          <div id="advice-status" class="advice-status" role="status" aria-live="polite" aria-atomic="true"></div>
+        </div>
+
+        <div id="advice-result-area" class="tip-area border rounded p-3 bg-light">
+          <blockquote id="advice-result" class="mb-0 fst-italic"></blockquote>
+        </div>
+        <p class="small text-muted mt-3 mb-0">API endpoint: <code>https://api.adviceslip.com/advice</code> (no API key; CORS enabled).</p>
+      </div>
     </section>
 
-    <section class="full-width contact-form" aria-labelledby="contact-heading">
-      <h2 id="contact-heading">Contact / Feedback</h2>
-      <p>Use this form to leave a short message about the page. JavaScript now checks your input and shows a personalized response on the page (still no server).</p>
+    <section id="contact" class="card shadow-sm mb-4" aria-labelledby="contact-heading">
+      <div class="card-body">
+        <h2 id="contact-heading" class="h4 text-primary">Contact / Feedback</h2>
+        <p>Use this form to leave a short message about the page. JavaScript checks your input and shows a personalized response on the page (still no server).</p>
 
-      <form id="contact-form" action="#" method="get" novalidate>
-        <fieldset>
-          <legend>Your details and feedback</legend>
+        <form id="contact-form" action="#" method="get" novalidate>
+          <fieldset>
+            <legend class="float-none w-auto px-2 fs-6 fw-semibold text-primary">Your details and feedback</legend>
 
-          <div class="form-group">
-            <label for="visitor-name">Name (required)</label>
-            <input type="text" id="visitor-name" name="name" required autocomplete="name" placeholder="Your name">
-          </div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="visitor-name" class="form-label">Name (required)</label>
+                <input type="text" class="form-control" id="visitor-name" name="name" autocomplete="name" placeholder="Your name" aria-describedby="visitor-name-error">
+                <div id="visitor-name-error" class="invalid-feedback" role="alert"></div>
+              </div>
 
-          <div class="form-group">
-            <label for="visitor-email">Email (required)</label>
-            <input type="email" id="visitor-email" name="email" required autocomplete="email" placeholder="you@example.com">
-          </div>
+              <div class="col-md-6">
+                <label for="visitor-email" class="form-label">Email (required)</label>
+                <input type="email" class="form-control" id="visitor-email" name="email" autocomplete="email" placeholder="you@example.com" aria-describedby="visitor-email-error">
+                <div id="visitor-email-error" class="invalid-feedback" role="alert"></div>
+              </div>
 
-          <div class="form-group">
-            <label for="topic">Topic</label>
-            <select id="topic" name="topic">
-              <option value="">Select a topic</option>
-              <option value="coursework">Coursework question</option>
-              <option value="feedback">Page feedback</option>
-              <option value="accessibility">Accessibility</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
+              <div class="col-12">
+                <label for="topic" class="form-label">Topic</label>
+                <select class="form-select" id="topic" name="topic" aria-describedby="topic-error">
+                  <option value="">Select a topic</option>
+                  <option value="coursework">Coursework question</option>
+                  <option value="feedback">Page feedback</option>
+                  <option value="accessibility">Accessibility</option>
+                  <option value="other">Other</option>
+                </select>
+                <div id="topic-error" class="invalid-feedback" role="alert"></div>
+              </div>
 
-          <div class="form-group">
-            <p id="contact-pref-label"><strong>Preferred contact method</strong></p>
-            <div class="choice-group" role="group" aria-labelledby="contact-pref-label">
-              <label for="pref-email">
-                <input type="radio" id="pref-email" name="contact_pref" value="email" checked>
-                Email
-              </label>
-              <label for="pref-none">
-                <input type="radio" id="pref-none" name="contact_pref" value="none">
-                No reply needed
-              </label>
+              <div class="col-12">
+                <p id="contact-pref-label" class="form-label mb-2">Preferred contact method</p>
+                <div class="d-flex flex-wrap gap-3" role="group" aria-labelledby="contact-pref-label">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="contact_pref" id="pref-email" value="email" checked>
+                    <label class="form-check-label" for="pref-email">Email</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="contact_pref" id="pref-none" value="none">
+                    <label class="form-check-label" for="pref-none">No reply needed</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your message here"></textarea>
+              </div>
+
+              <div class="col-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="updates" name="updates" value="yes">
+                  <label class="form-check-label" for="updates">I am happy to receive occasional learning tips by email</label>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="d-flex flex-wrap gap-2 form-actions">
+                  <button type="submit" class="btn btn-primary">Send feedback</button>
+                  <button type="button" id="toggle-tip" class="btn btn-outline-primary">Hide tip</button>
+                </div>
+              </div>
             </div>
-          </div>
+          </fieldset>
+        </form>
 
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="4" placeholder="Write your message here"></textarea>
-          </div>
-
-          <div class="form-group">
-            <label for="updates">
-              <input type="checkbox" id="updates" name="updates" value="yes">
-              I am happy to receive occasional learning tips by email
-            </label>
-          </div>
-
-          <div class="form-toolbar">
-            <button type="submit">Send feedback</button>
-            <button type="button" id="toggle-tip">Hide tip</button>
-          </div>
-        </fieldset>
-      </form>
-      <div id="form-feedback" role="status" aria-live="polite"></div>
-      <p id="form-tip" class="form-note form-tip">Tip: JavaScript intercepts submit with <code>preventDefault()</code>, validates the fields, and writes a personalized message here instead of reloading the page.</p>
+        <div id="form-feedback" class="alert mt-3 d-none" role="status" aria-live="polite" aria-atomic="true"></div>
+        <p id="form-tip" class="form-text mt-3">Tip: JavaScript intercepts submit with <code>preventDefault()</code>, validates the fields, and writes a personalized message here instead of reloading the page.</p>
+      </div>
     </section>
 
+    <section id="reflection" class="card shadow-sm mb-4" aria-labelledby="reflection-heading">
+      <div class="card-body">
+        <h2 id="reflection-heading" class="h4 text-primary">Reflection</h2>
+        <p><strong>Speed of development:</strong> Building the navbar, grid, form fields and buttons was much faster than writing that CSS myself. Most of my time went into keeping my own JavaScript working with Bootstrap's markup.</p>
+        <p><strong>Responsiveness:</strong> The old site needed manual layout tweaks to fit a phone. Bootstrap's grid stacks the fields on a narrow screen without extra media queries. I still tested at phone width, because the tip area and a full-width button can feel cramped if you trust the defaults alone.</p>
+        <p><strong>Usability:</strong> The components look consistent, but they also hide some design choices I had made by hand. The awkward parts were overriding a couple of default styles without fighting the framework, and making sure the validation message and the API error were obvious through text, not only a colour change.</p>
+        <p class="mb-0"><strong>Reflection:</strong> I would use Bootstrap again for a form-heavy page, but I would keep the fetch and validation logic in my own script so the behaviour stays clear and easy to debug.</p>
+      </div>
+    </section>
   </main>
 
-  <footer class="full-width">
-    <p style="text-align: center; color: #444;"><em>Created by Irfan Asrar for a Web Technologies course.</em></p>
+  <footer class="border-top py-3 mt-auto">
+    <div class="container">
+      <p class="text-center text-muted mb-0"><em>Created by Irfan Asrar for a Web Technologies course.</em></p>
+    </div>
   </footer>
-  <script src="script.js" defer></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
