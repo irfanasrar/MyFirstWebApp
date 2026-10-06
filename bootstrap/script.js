@@ -1,3 +1,32 @@
+// On a phone, close the open menu before jumping to a section.
+// If the jump happens while the menu is still open, the heading ends up under the bar.
+(function () {
+  var nav = document.getElementById('main-nav');
+  if (!nav || !window.bootstrap) {
+    return;
+  }
+
+  nav.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      if (!nav.classList.contains('show')) {
+        return;
+      }
+
+      var target = document.querySelector(link.getAttribute('href'));
+      if (!target) {
+        return;
+      }
+
+      event.preventDefault();
+      var collapse = bootstrap.Collapse.getOrCreateInstance(nav, { toggle: false });
+      nav.addEventListener('hidden.bs.collapse', function () {
+        target.scrollIntoView({ block: 'start' });
+      }, { once: true });
+      collapse.hide();
+    });
+  });
+})();
+
 // Contact form checks. Same rules as the original page, with Bootstrap valid/invalid styles.
 (function () {
   var form = document.getElementById('contact-form');
