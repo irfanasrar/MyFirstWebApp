@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About Irfan Asrar (Bootstrap 5)</title>
+  <!-- Bootstrap 5.3 CSS from jsDelivr, as in the Get Started guide. -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+<body class="bg-light d-flex flex-column min-vh-100">
+  <a class="visually-hidden-focusable" href="#main-content">Skip to main content</a>
+
+  <header class="bg-white border-bottom">
+    <nav class="navbar navbar-expand-lg sticky-top bg-white border-bottom" aria-label="Main">
+      <div class="container">
+        <a class="navbar-brand" href="#top">About Me</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main-nav" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-nav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#background">Background</a></li>
+            <li class="nav-item"><a class="nav-link" href="#interests">Interests</a></li>
+            <li class="nav-item"><a class="nav-link" href="#goals">Goals</a></li>
+            <li class="nav-item"><a class="nav-link" href="#learn-more">Learn more</a></li>
+            <li class="nav-item"><a class="nav-link" href="#advice">Tip</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html">Original page</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container py-4 text-center" id="top">
+      <h1 class="text-primary">About Me</h1>
+      <p class="lead mb-0">Hello! My name is <strong>Irfan Asrar</strong>. I am an experienced technology professional with an interest in web technologies.</p>
+    </div>
+  </header>
+
+  <main id="main-content" class="container py-4 flex-grow-1">
+    <div class="row g-4">
+      <section class="col-md-6" id="background" aria-labelledby="background-heading">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title h4" id="background-heading">My Background</h2>
+            <p class="card-text mb-0">I have more than 20 years of professional experience. I enjoy learning about technology, solving complex problems, and developing new skills.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-md-6" id="interests" aria-labelledby="interests-heading">
+        <div class="card h-100 bg-primary-subtle border-primary-subtle">
+          <div class="card-body">
+            <h2 class="card-title h4" id="interests-heading">My Interests</h2>
+            <ul class="mb-0">
+              <li>Technology and cybersecurity</li>
+              <li>Artificial intelligence</li>
+              <li>Travel and learning about other cultures</li>
+              <li>Investing and financial planning</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-md-6" id="goals" aria-labelledby="goals-heading">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title h4" id="goals-heading">My Learning Goals</h2>
+            <ol class="mb-0">
+              <li>Understand the foundations of HTML and CSS</li>
+              <li>Learn how to build useful web pages</li>
+              <li>Apply web technologies to real-world projects</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-md-6" id="learn-more" aria-labelledby="learn-heading">
+        <div class="card h-100">
+          <div class="card-body">
+            <h2 class="card-title h4" id="learn-heading">Learn More</h2>
+            <p class="card-text mb-0">One resource I use to learn HTML is <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer" class="fw-bold">MDN Web Docs (opens in a new tab)</a>.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-12" id="advice" aria-labelledby="advice-heading">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title h4" id="advice-heading">Random learning tip</h2>
+            <p>Click the button to fetch a short tip from a free public API (<a href="https://api.adviceslip.com/" target="_blank" rel="noopener noreferrer">Advice Slip</a>). The browser uses <code>fetch</code> to call the API and updates this page with the result.</p>
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-3">
+              <button type="button" class="btn btn-primary" id="get-advice">
+                <span id="advice-spinner" class="spinner-border spinner-border-sm me-2 d-none" aria-hidden="true"></span>
+                <span id="advice-label">Get a tip</span>
+              </button>
+            </div>
+            <div id="advice-live" role="status" aria-live="polite" aria-atomic="true">
+              <div id="advice-status" class="d-none"></div>
+              <blockquote id="advice-result" class="blockquote fst-italic bg-primary-subtle text-primary-emphasis p-3 rounded mb-0 mt-3 d-none"></blockquote>
+            </div>
+            <p class="small mt-3 mb-0">API endpoint: <code>https://api.adviceslip.com/advice</code> (no API key; CORS enabled).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="col-12" id="contact" aria-labelledby="contact-heading">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title h4" id="contact-heading">Contact / Feedback</h2>
+            <p>Use this form to leave a short message about the page. JavaScript now checks your input and shows a personalized response on the page (still no server).</p>
+
+            <form id="contact-form" action="#" method="get" novalidate>
+              <fieldset class="border rounded p-3">
+                <legend class="float-none w-auto fs-6 fw-semibold px-1 mb-3">Your details and feedback</legend>
+
+                <div class="mb-3">
+                  <label class="form-label" for="visitor-name">Name (required)</label>
+                  <input class="form-control" type="text" id="visitor-name" name="name" required autocomplete="name" placeholder="Your name">
+                  <div class="invalid-feedback">Please enter your name before sending.</div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="visitor-email">Email (required)</label>
+                  <input class="form-control" type="email" id="visitor-email" name="email" required autocomplete="email" placeholder="you@example.com">
+                  <div class="invalid-feedback">Please enter a valid email address (it should include @).</div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="topic">Topic</label>
+                  <select class="form-select" id="topic" name="topic" required>
+                    <option value="">Select a topic</option>
+                    <option value="coursework">Coursework question</option>
+                    <option value="feedback">Page feedback</option>
+                    <option value="accessibility">Accessibility</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <div class="invalid-feedback">Please choose a topic from the list so I know how to reply.</div>
+                </div>
+
+                <div class="mb-3">
+                  <p class="fw-semibold mb-2" id="contact-pref-label">Preferred contact method</p>
+                  <div class="d-flex flex-column flex-sm-row gap-2 gap-sm-4" role="group" aria-labelledby="contact-pref-label">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" id="pref-email" name="contact_pref" value="email" checked>
+                      <label class="form-check-label" for="pref-email">Email</label>
+                    </div>
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" id="pref-none" name="contact_pref" value="none">
+                      <label class="form-check-label" for="pref-none">No reply needed</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label" for="message">Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="4" placeholder="Write your message here"></textarea>
+                </div>
+
+                <div class="mb-3 form-check">
+                  <input class="form-check-input" type="checkbox" id="updates" name="updates" value="yes">
+                  <label class="form-check-label" for="updates">I am happy to receive occasional learning tips by email</label>
+                </div>
+
+                <div class="d-flex flex-wrap gap-2">
+                  <button class="btn btn-primary" type="submit">Send feedback</button>
+                  <button class="btn btn-outline-primary" type="button" id="toggle-tip" aria-controls="form-tip" aria-expanded="true">Hide tip</button>
+                </div>
+              </fieldset>
+            </form>
+
+            <div id="form-feedback" class="alert d-none mt-3 mb-0" role="status" aria-live="polite"></div>
+            <p id="form-tip" class="mt-3 mb-0">Tip: JavaScript intercepts submit with <code>preventDefault()</code>, validates the fields, and writes a personalized message here instead of reloading the page.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="bg-white border-top mt-auto">
+    <div class="container py-4 text-center">
+      <p class="mb-2"><em>Created by Irfan Asrar for a Web Technologies course.</em></p>
+      <p class="mb-0"><a href="../index.html">Back to the original page</a></p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS bundle (includes Popper) from jsDelivr. -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
