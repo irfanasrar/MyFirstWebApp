@@ -1,12 +1,10 @@
-/**
- * Contact form validation and Advice Slip fetch for the Bootstrap rebuild.
- * Bootstrap's JS bundle only handles the navbar collapse; all behaviour here
- * is our own.
- */
+// script.js - contact form checks + the random tip button
+// Bootstrap's bundle only does the navbar toggle, everything below is mine.
+
 (function () {
   'use strict';
 
-  /* ---------- Contact / feedback form ---------- */
+  // ===== Contact form =====
 
   var form = document.getElementById('contact-form');
   var feedback = document.getElementById('form-feedback');
@@ -20,13 +18,13 @@
     var messageInput = document.getElementById('message');
     var updatesInput = document.getElementById('updates');
 
+    // the three fields I actually validate, and where each error goes
     var fieldMap = {
       name: { input: nameInput, errorId: 'visitor-name-error' },
       email: { input: emailInput, errorId: 'visitor-email-error' },
       topic: { input: topicInput, errorId: 'topic-error' }
     };
 
-    /** Clear Bootstrap validation state on one field. */
     function clearFieldError(key) {
       var entry = fieldMap[key];
       if (!entry || !entry.input) {
@@ -40,7 +38,7 @@
       }
     }
 
-    /** Mark a field invalid with visible text (not colour alone). */
+    // red border on its own isn't enough, so I always put a text message under the field too
     function setFieldError(key, message) {
       var entry = fieldMap[key];
       if (!entry || !entry.input) {
@@ -71,6 +69,7 @@
       feedback.classList.remove('alert-success', 'alert-danger');
     }
 
+    // turns the select value into something that reads ok in a sentence
     function topicLabel(value) {
       var labels = {
         coursework: 'a coursework question',
@@ -81,7 +80,8 @@
       return labels[value] || 'your message';
     }
 
-    // Same rules as the original site: name required, email must include @, topic required.
+    // same rules as my first version: name required, email needs an @, topic required
+    // returns the first bad field (or null if everything's fine)
     function validateForm() {
       clearAllFieldErrors();
       hideConfirmation();
@@ -96,6 +96,7 @@
         firstInvalid = firstInvalid || nameInput;
       }
 
+      // check the email has an @ before we go any further
       if (!email || email.indexOf('@') === -1) {
         setFieldError('email', 'Please enter a valid email address (it should include @).');
         firstInvalid = firstInvalid || emailInput;
@@ -109,6 +110,7 @@
       return firstInvalid;
     }
 
+    // little show/hide for the tip line under the form
     if (toggleTip && tip) {
       toggleTip.addEventListener('click', function () {
         var hidden = tip.classList.toggle('d-none');
@@ -117,7 +119,7 @@
     }
 
     form.addEventListener('submit', function (event) {
-      event.preventDefault();
+      event.preventDefault(); // no server, so don't let the page reload
 
       var firstInvalid = validateForm();
       if (firstInvalid) {
@@ -133,7 +135,7 @@
       var pref = form.querySelector('input[name="contact_pref"]:checked');
       var contactPref = pref ? pref.value : 'email';
 
-      // Short confirmation after a valid submission (same personalisation ideas as before).
+      // build up the thank-you message bit by bit depending on what they picked
       var parts = [];
       parts.push('Thanks, ' + name + '! I received your note about ' + topicLabel(topic) + '.');
       if (message) {
@@ -152,7 +154,7 @@
     });
   }
 
-  /* ---------- Advice Slip random tip ---------- */
+  // ===== Random tip (Advice Slip API) =====
 
   var button = document.getElementById('get-advice');
   var statusEl = document.getElementById('advice-status');
@@ -164,7 +166,7 @@
     function setLoading(isLoading) {
       button.disabled = isLoading;
       if (isLoading) {
-        // Visible loading state: spinner + text, button disabled.
+        // spinner + some text so it's obvious something is happening
         statusEl.classList.remove('is-error');
         statusEl.innerHTML =
           '<span class="spinner-border spinner-border-sm text-primary me-2" role="status" aria-hidden="true"></span>' +
@@ -189,7 +191,8 @@
       resultEl.textContent = '';
 
       try {
-        // cache: 'no-store' plus a cache-busting query so repeat clicks can get a new tip
+        // the API kept giving me the same tip on repeat clicks,
+        // so no-store + a timestamp on the url sorts that out
         var response = await fetch(ADVICE_URL + '?t=' + Date.now(), {
           method: 'GET',
           headers: { Accept: 'application/json' },
@@ -210,8 +213,8 @@
         resultEl.textContent = '"' + advice + '"';
         showStatus('Tip loaded successfully.', false);
       } catch (err) {
+        // network down or weird response - either way show a proper text message
         resultEl.textContent = '';
-        // Clear, readable text error if the request fails (network or bad response).
         showStatus('Could not load a tip. Check your connection and try again.', true);
         console.error('Advice Slip fetch failed:', err);
       } finally {

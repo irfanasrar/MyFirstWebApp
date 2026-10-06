@@ -1,31 +1,23 @@
-# MyFirstWebApp (Bootstrap 5 rebuild)
+# MyFirstWebApp
 
-Personal “About Me” page rebuilt with Bootstrap 5. Same contact form rules and Advice Slip tip as the earlier hand-written version, plus a short reflection on using the framework.
+This is my "About Me" page for the Web Technologies course, rebuilt with Bootstrap 5. It keeps the contact form checks and the random tip button from my first version, and has a short reflection on what using a framework was like.
 
 ## Files
 
-- `index.html` — page structure, Bootstrap 5.3 CDN links, navbar, grid, form and tip UI
-- `css/styles.css` — small overrides (tip area height, phone button width, focus)
-- `js/script.js` — form validation and Advice Slip `fetch` (no inline scripts)
-- `REFLECTION.md` — course reflection notes (also shown on the page)
-- `screenshots/` — optional local test screenshots
+- `index.html` - the page itself (Bootstrap 5.3 from the CDN)
+- `css/styles.css` - a few small style tweaks on top of Bootstrap
+- `js/script.js` - form validation and the Advice Slip tip fetch
+- `REFLECTION.md` - my reflection (same text as on the page)
+- `screenshots/` - screenshots I took while testing
 
-## Run locally
+## How to run
 
-From this folder:
+No build step, it's just static files. From this folder run:
 
 ```bash
 python3 -m http.server 8000
 ```
 
-Open http://localhost:8000/ in a browser.
+then open http://localhost:8000/ in a browser.
 
-## Deploy to GitHub Pages
-
-This is a plain static site (no build step). To publish it as the existing Pages site:
-
-1. Copy `index.html`, `css/`, `js/`, and `REFLECTION.md` into the `MyFirstWebApp` repository (replace the previous files).
-2. Commit and push to the branch that GitHub Pages serves (usually `main` or `gh-pages`).
-3. Wait a minute, then check https://irfanasrar.github.io/MyFirstWebApp/
-
-You do not need npm or any bundler. Bootstrap loads from the jsDelivr CDN.
+Live version: https://irfanasrar.github.io/MyFirstWebApp/
